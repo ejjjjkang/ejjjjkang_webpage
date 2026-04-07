@@ -13,7 +13,7 @@ const Menubar = () => {
 		>
 			<MenuItemWrapper>
 				<HashLink smooth to="/#me">
-					About me
+					About
 				</HashLink>
 			</MenuItemWrapper>
 			<MenuItemWrapper>
@@ -28,13 +28,10 @@ const Menubar = () => {
 				<Link to="/#fun-project">Fun Projects</Link>
 			</MenuItemWrapper> */}
 			<MenuItemWrapper>
-				<HashLink smooth to="/#resource">
-					Resource
+				<HashLink smooth to="/#news">
+					News
 				</HashLink>
 			</MenuItemWrapper>
-			{/* <MenuItemWrapper>
-				<Link to="/#resource">Korea</Link>
-			</MenuItemWrapper> */}
 		</Stack>
 	);
 };
