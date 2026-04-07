@@ -5,8 +5,7 @@ import { HeaderWrapper } from "../wrappers/WordChipWrapper";
 const DailyLog = () => {
 	return (
 		<Wrapper>
-			<HeaderWrapper id="resource">Resource / Entertainment</HeaderWrapper>I
-			This section is for sharing resources that I found useful for research!
+			<HeaderWrapper id="news">News</HeaderWrapper>
 			{/* <iframe
 				style={{ borderRadius: "12px" }}
 				src="https://open.spotify.com/embed/playlist/4PK5g801rWmxgHVTDBBbtd?utm_source=generator&theme=0"

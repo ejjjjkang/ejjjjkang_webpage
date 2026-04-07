@@ -5,7 +5,6 @@ import SchoolIcon from "@mui/icons-material/School";
 import { TbFileCv } from "react-icons/tb";
 import { LinkChipWrapper } from "../wrappers/WordChipWrapper";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import XIcon from "@mui/icons-material/X";
 
 const ProfileWrapper = () => {
 	return (
@@ -23,9 +22,6 @@ const ProfileWrapper = () => {
 				</LinkChipWrapper>
 				<LinkChipWrapper link="www.linkedin.com/in/ejeunkang">
 					<LinkedInIcon fontSize="large" />
-				</LinkChipWrapper>
-				<LinkChipWrapper link="https://x.com/eunxkang">
-					<XIcon fontSize="large" />
 				</LinkChipWrapper>
 			</Stack>
 		</Stack>

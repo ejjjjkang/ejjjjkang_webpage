@@ -20,6 +20,7 @@ const Main = () => {
 				<Stack direction={{ md: "row", xs: "column" }} alignItems={"center"}>
 					<ProfileWrapper />
 					<Stack direction={"column"} sx={{ p: 5 }}>
+						<HeaderWrapper id="me">About</HeaderWrapper>
 						<Stack sx={{ lineHeight: "160%" }}>
 							<p>
 								I am a third-year PhD student in{" "}
@@ -64,6 +65,7 @@ const Main = () => {
 								</p>
 							</p>
 						</Stack>
+						<HeaderWrapper id="news-featured">News</HeaderWrapper>
 						{news_content.map((news, index) =>
 							news.featureds ? (
 								<NewsWrapper key={index} date={news.date}>
