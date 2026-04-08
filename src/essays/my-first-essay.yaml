@@ -1,0 +1,9 @@
+id: my-first-essay
+title: My First Essay
+date: Jan, 2026
+# image: /essays/my-first-essay.jpg  # uncomment and add image to public/essays/
+
+content: |
+  Your essay content goes here. You can write multiple paragraphs.
+
+  Second paragraph here.
