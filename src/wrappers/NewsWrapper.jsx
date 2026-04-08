@@ -13,7 +13,7 @@ const NewsWrapper = ({ children, date }) => {
 				fontSize: "0.95rem",
 			}}
 		>
-			<Stack sx={{ whiteSpace: "nowrap", minWidth: "110px" }}>{date}</Stack>
+			<Stack sx={{ whiteSpace: "nowrap", minWidth: { md: "110px", xs: "80px" }, fontSize: { xs: "0.8rem", md: "1rem" } }}>{date}</Stack>
 			<Stack
 				sx={{
 					fontWeight: 400,

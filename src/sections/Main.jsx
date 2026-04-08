@@ -29,14 +29,14 @@ const Main = () => {
 					margin: "auto",
 				}}
 			>
-				<Stack direction={{ md: "column", xs: "column" }}>
+				<Stack direction={"column"}>
 					<Stack
-						direction={"row"}
+						direction={{ md: "row", xs: "column" }}
 						sx={{ fontWeight: 400 }}
-						alignItems={"center"}
+						alignItems={{ md: "center", xs: "flex-start" }}
 					>
 						<ProfileWrapper />
-						<Stack direction={"column"} sx={{ pl: 4, fontWeight: 400 }}>
+						<Stack direction={"column"} sx={{ pl: { md: 4, xs: 0 }, pt: { xs: 2, md: 0 }, fontWeight: 400 }}>
 							<HeaderWrapper id="me">About</HeaderWrapper>
 							<Stack sx={{ lineHeight: "160%" }}>
 								<p>
@@ -87,7 +87,7 @@ const Main = () => {
 							</Stack>
 						</Stack>
 					</Stack>
-					<Stack direction={{ md: "row", xs: "column" }} sx={{ p: 3, gap: 4 }}>
+					<Stack direction={{ md: "row", xs: "column" }} sx={{ p: { md: 3, xs: 0 }, pt: 3, gap: { md: 4, xs: 2 } }}>
 						{/* News column */}
 						<Stack direction={"column"} sx={{ flex: 1 }}>
 							<Stack
@@ -125,7 +125,7 @@ const Main = () => {
 										direction="row"
 										sx={{ alignItems: "flex-start" }}
 									>
-										<Stack sx={{ whiteSpace: "nowrap", minWidth: "110px" }}>
+										<Stack sx={{ whiteSpace: "nowrap", minWidth: { md: "110px", xs: "80px" }, fontSize: { xs: "0.8rem", md: "1rem" } }}>
 											{essay.date}
 										</Stack>
 										<Stack

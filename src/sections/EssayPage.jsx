@@ -15,6 +15,11 @@ const EssayPage = () => {
 		);
 	}
 
+	const paragraphs = essay.content
+		.split(/\n\n+/)
+		.map((p) => p.trim())
+		.filter(Boolean);
+
 	return (
 		<Container sx={{ pt: "80px", pb: 8, maxWidth: "720px" }}>
 			<Stack direction="column" sx={{ gap: 2 }}>
@@ -27,8 +32,19 @@ const EssayPage = () => {
 				<Typography sx={{ color: "#999", fontSize: "0.9rem" }}>
 					{essay.date}
 				</Typography>
-				<Stack sx={{ borderTop: "1px solid #eee", pt: 3, lineHeight: "1.8", whiteSpace: "pre-wrap" }}>
-					{essay.content}
+				{essay.image && (
+					<img
+						src={essay.image}
+						alt={essay.title}
+						style={{ width: "100%", borderRadius: "8px", objectFit: "cover" }}
+					/>
+				)}
+				<Stack sx={{ borderTop: "1px solid #eee", pt: 3, gap: 2 }}>
+					{paragraphs.map((para, i) => (
+						<Typography key={i} sx={{ lineHeight: 1.8 }}>
+							{para}
+						</Typography>
+					))}
 				</Stack>
 			</Stack>
 		</Container>

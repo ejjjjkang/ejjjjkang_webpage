@@ -1,0 +1,27 @@
+# ============================================================
+# ESSAY TEMPLATE — copy this file and rename it (e.g. my-essay.yaml)
+# Files starting with "_" are ignored by the loader.
+# ============================================================
+
+# REQUIRED fields
+id: my-essay-id          # URL slug: only lowercase letters, numbers, hyphens. No spaces.
+                         # This becomes /#/essay/my-essay-id
+title: My Essay Title    # Shown in the list and at the top of the essay page
+date: Jan, 2026          # Display date — any format is fine
+
+# OPTIONAL fields
+image: /essays/my-image.jpg
+  # Place images in: public/essays/my-image.jpg
+  # Recommended size: 800×400px or wider, under 500 KB
+  # Supported formats: jpg, png, webp, gif
+
+# CONTENT
+# Use the | character to write multi-line text.
+# Blank lines between paragraphs are preserved.
+# Limitation: plain text only (no markdown/HTML).
+content: |
+  This is your first paragraph. Write as much as you want here.
+
+  This is a second paragraph — just leave a blank line between them.
+
+  And a third paragraph.

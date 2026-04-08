@@ -34,7 +34,7 @@ const Projects = () => {
 							{project.img ? (
 								<ThumbnailWrapper>{project.img}</ThumbnailWrapper>
 							) : (
-								<Skeleton variant="rectangular" width={300} height={150} />
+								<Skeleton variant="rectangular" width="100%" height={150} />
 							)}
 							<Stack
 								direction={"column"}
