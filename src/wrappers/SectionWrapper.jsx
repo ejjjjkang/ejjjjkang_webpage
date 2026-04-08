@@ -3,7 +3,7 @@ import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrow
 
 const Wrapper = ({ children }) => {
 	return (
-		<Stack direction="column" sx={{ height: "100vh", overflow: "auto", p: 5 }}>
+		<Stack direction="column" sx={{ overflow: "auto", p: 5, pt: 3 }}>
 			{children}
 		</Stack>
 	);

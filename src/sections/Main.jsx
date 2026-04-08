@@ -5,7 +5,7 @@ import { HeaderWrapper } from "../wrappers/WordChipWrapper";
 
 import "./index.css";
 import NewsWrapper from "../wrappers/NewsWrapper";
-import { news_content } from "../sources/textContent";
+import { news_content } from "../sources/textContent.jsx";
 
 const Main = () => {
 	return (
@@ -35,12 +35,12 @@ const Main = () => {
 									Susan Fussell
 								</a>
 								. <br />
-								My research focuses on designing AI systems and communication
-								technologies that incorporates social values. Utilizing
-								user-centered methods (e.g., surveys, interviews, speculative
-								design), I aim to design AI systems that promote appropriate
-								reliance with responsibility, which aligns with stakeholder
-								values. <br />
+								My research focuses on how emerging technologies shape end-user
+								experiences and how to design interventions that enable
+								end-users to leverage technologies in accountable ways Recently,
+								I am interested in investigating platforms' governance power
+								over AI technologies, trust and safety issues in Human-AI
+								interactions, and creative AI supply-chain. <br />
 								<p>
 									Previously, I worked as a digital marketing strategist and
 									front-end developer that designs brand experience and
@@ -66,13 +66,15 @@ const Main = () => {
 							</p>
 						</Stack>
 						<HeaderWrapper id="news-featured">News</HeaderWrapper>
-						{news_content.map((news, index) =>
-							news.featureds ? (
-								<NewsWrapper key={index} date={news.date}>
-									{news.content}
-								</NewsWrapper>
-							) : null
-						)}
+						<Stack sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+							{news_content.map((news, index) =>
+								news.featureds ? (
+									<NewsWrapper key={index} date={news.date}>
+										{news.content}
+									</NewsWrapper>
+								) : null,
+							)}
+						</Stack>
 					</Stack>
 				</Stack>
 			</Stack>

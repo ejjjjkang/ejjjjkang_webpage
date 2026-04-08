@@ -30,7 +30,17 @@ export const MenuItemWrapper = styled.span`
 `;
 
 export const HeaderWrapper = styled.h4`
-	font-size: 2em;
+	font-size: 1.5em;
+	margin-bottom: 0.8em;
+
+	&::after {
+		content: "";
+		display: block;
+		width: 8rem;
+		height: 4px;
+		background-color: #158697;
+		margin-top: 0.3em;
+	}
 `;
 
 export const LinkWrapper = styled.a`
