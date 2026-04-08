@@ -90,9 +90,13 @@ const Projects = () => {
 									{index === activeIndex ? (
 										<Box
 											sx={{
-												backgroundColor: "#acdee9",
-												p: 1,
+												border: "1px  #6fc5c971 solid",
+												backgroundColor: "#ffffff",
+												p: 3,
 												mt: 1,
+												fontSize: "0.9em",
+												lineHeight: "150%",
+												fontWeight: 400,
 												borderRadius: "10px",
 											}}
 										>

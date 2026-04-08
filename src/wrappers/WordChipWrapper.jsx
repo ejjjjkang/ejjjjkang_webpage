@@ -30,7 +30,7 @@ export const MenuItemWrapper = styled.span`
 `;
 
 export const HeaderWrapper = styled.h4`
-	font-size: 1.5em;
+	font-size: 1.2em;
 	margin-bottom: 0.8em;
 
 	&::after {

@@ -17,9 +17,7 @@ const Resource = () => {
 	return (
 		<Wrapper>
 			<Stack direction={"column"} sx={{ p: 2 }}>
-				<HeaderWrapper id="resource">
-					Research Resources and some food for thoughts
-				</HeaderWrapper>
+				<HeaderWrapper id="resource">Research Resources</HeaderWrapper>
 				<Typography variant="p">
 					I believe that the social impact of research is retained through gift
 					culture. Here are some of the resources that I recommend for

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import EssayPage from "./sections/EssayPage";
 import {
 	createBrowserRouter,
 	createHashRouter,
@@ -15,10 +16,10 @@ const router = createHashRouter([
 		path: "/",
 		element: <App />,
 	},
-	// {
-	// 	path: "/publications",
-	// 	element: <div>publications</div>,
-	// },
+	{
+		path: "/essay/:id",
+		element: <EssayPage />,
+	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
