@@ -137,7 +137,7 @@ export const news_content = [
 		date: "April, 2026",
 		content: (
 			<>
-				Attending CHI 2026! I will attend a workshop{" "}
+				Attending CHI 2026! I will attend a workshop
 				<a
 					href="https://sites.google.com/tilburguniversity.edu/democratizationgenai-chi26/home?authuser=0"
 					target="_blank"
