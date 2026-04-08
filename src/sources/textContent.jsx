@@ -1,9 +1,18 @@
 export const project_content = [
 	{
 		title:
+			"Remix Culture as a Lens for Governing Derivative AI Models: A Hatsune Miku Case Study",
+		img: "/thumbnails/miku.png",
+		link_doi: "/miku.pdf",
+		author: ["Eun Jeong Kang", "Waki Kamino", "Susan Fussell", "Malte Jung"],
+		conference: "CHI 2026 workshop",
+		published: true,
+	},
+	{
+		title:
 			"Can Fans Build Parasocial Relationships through Idols’ Simulated Voice Messages?: \
 			A Study of AI Private Call Users’: Perceptions, Cognitions, and Behaviors",
-		link_doi: "/FanAI_Camera_Ready.pdf",
+		link_doi: "https://dl.acm.org/doi/abs/10.1145/3711111",
 		img: "/thumbnails/fanAI02.png",
 		author: [
 			"Eun Jeong Kang",
@@ -18,7 +27,7 @@ export const project_content = [
 	{
 		title:
 			"Proxona: Leveraging LLM-Driven Personas to Enhance Creators' Understanding of Their Audience",
-		link_doi: "https://arxiv.org/pdf/2408.10937",
+		link_doi: "https://doi.org/10.1145/3706598.3714034",
 		img: "/thumbnails/proxona01.png",
 		author: [
 			"Yoonseo Choi",
@@ -27,7 +36,7 @@ export const project_content = [
 			"Min Kyung Lee",
 			"Juho Kim",
 		],
-		conference: "AXIV",
+		conference: "CHI 2025",
 		published: true,
 	},
 	{
@@ -133,6 +142,11 @@ export const story_content = [
 ];
 
 export const news_content = [
+	{
+		date: "June, 2026",
+		content: "Will be attending FAccT 2026 Doctoral Consortium",
+		featureds: true,
+	},
 	{
 		date: "April, 2026",
 		content: (
