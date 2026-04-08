@@ -1,37 +1,50 @@
-import { Box, Menu, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import "./index.css";
-import { MenuItemWrapper } from "./WordChipWrapper";
-import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import styled from "styled-components";
+
+const NavLink = styled(HashLink)`
+	text-decoration: none;
+	color: #555;
+	font-size: 0.95rem;
+	font-weight: 400;
+	padding: 0 0.75rem;
+
+	&:hover {
+		color: #000;
+	}
+`;
 
 const Menubar = () => {
 	return (
 		<Stack
-			direction={"column"}
-			alignItems={"flex-end"}
-			sx={{ position: "fixed", right: "18%", zIndex: 3, opacity: 0.8 }}
+			direction={"row"}
+			justifyContent={"center"}
+			alignItems={"center"}
+			sx={{
+				position: "fixed",
+				top: 0,
+				left: 0,
+				right: 0,
+				zIndex: 3,
+				backgroundColor: "rgba(255,255,255,0.9)",
+				backdropFilter: "blur(6px)",
+				borderBottom: "1px solid #eee",
+				py: 1.5,
+			}}
 		>
-			<MenuItemWrapper>
-				<HashLink smooth to="/#me">
-					About
-				</HashLink>
-			</MenuItemWrapper>
-			<MenuItemWrapper>
-				<HashLink smooth to="/#publications">
-					Publications
-				</HashLink>
-			</MenuItemWrapper>
-			{/* <MenuItemWrapper>
-				<Link to="/#reading-list">Reading List</Link>
-			</MenuItemWrapper> */}
-			{/* <MenuItemWrapper>
-				<Link to="/#fun-project">Fun Projects</Link>
-			</MenuItemWrapper> */}
-			<MenuItemWrapper>
-				<HashLink smooth to="/#news">
-					News
-				</HashLink>
-			</MenuItemWrapper>
+			<NavLink smooth to="/#me">
+				About
+			</NavLink>
+			<NavLink smooth to="/#publications">
+				Research
+			</NavLink>
+			<NavLink smooth to="/#projects">
+				Projects
+			</NavLink>
+			<NavLink smooth to="/#resource">
+				Resource
+			</NavLink>
 		</Stack>
 	);
 };

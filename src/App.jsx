@@ -3,6 +3,7 @@ import "./App.css";
 import Menubar from "./wrappers/Menubar";
 import Projects from "./sections/Projects";
 import AboutMe from "./sections/AboutMe";
+import Resource from "./sections/Resource";
 import DailyLog from "./sections/DailyLog";
 import Main from "./sections/Main";
 import ScrollToHashElement from "@cascadia-code/scroll-to-hash-element";
@@ -14,7 +15,7 @@ function App() {
 		<Container
 			className="inter-500"
 			id="me"
-			sx={{ position: "relative", backgroundColor: "white" }}
+			sx={{ position: "relative", backgroundColor: "white", pt: "56px" }}
 		>
 			<ScrollToHashElement behavior="smooth" />
 			<Menubar />
@@ -26,10 +27,11 @@ function App() {
 				<Projects />
 				<Divider />
 				<AboutMe />
-
+				<Divider />
+				<Resource />
 				{/* <ReadingList /> */}
 				<Divider />
-				<DailyLog />
+				{/* <DailyLog /> */}
 			</Stack>
 		</Container>
 	);

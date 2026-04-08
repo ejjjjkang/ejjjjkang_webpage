@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Wrapper from "../wrappers/SectionWrapper";
 import CardWrapper from "../wrappers/CardWrapper";
-import { project_content } from "../sources/textContent";
+import { project_content } from "../sources/textContent.jsx";
 import { Button, Stack, Typography, Skeleton, Box } from "@mui/material";
 import { ConferenceChipWrapper } from "../wrappers/WordChipWrapper";
 import ThumbnailWrapper from "../wrappers/ThumbnailWrapper";
