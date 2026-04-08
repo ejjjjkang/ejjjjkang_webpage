@@ -17,9 +17,14 @@ const Resource = () => {
 	return (
 		<Wrapper>
 			<Stack direction={"column"} sx={{ p: 2 }}>
-				<HeaderWrapper id="resource">Research Resources</HeaderWrapper>
+				<HeaderWrapper id="resource">
+					Research Resources and some food for thoughts
+				</HeaderWrapper>
 				<Typography variant="p">
-					A curated list of resources related to my research interests.
+					I believe that the social impact of research is retained through gift
+					culture. Here are some of the resources that I recommend for
+					researchers in the field of human-computer interaction and related
+					areas.
 				</Typography>
 			</Stack>
 			<Stack direction={"row"} flexWrap={"wrap"}>

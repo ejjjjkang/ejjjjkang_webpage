@@ -30,8 +30,20 @@ function App() {
 				<Divider />
 				<Resource />
 				{/* <ReadingList /> */}
-				<Divider />
 				{/* <DailyLog /> */}
+			</Stack>
+			<Stack
+				component="footer"
+				sx={{
+					borderTop: "1px solid #eee",
+					py: 3,
+					mt: 4,
+					textAlign: "center",
+					color: "#999",
+					fontSize: "0.85rem",
+				}}
+			>
+				© {new Date().getFullYear()} Eun Jeong Kang. All rights reserved.
 			</Stack>
 		</Container>
 	);

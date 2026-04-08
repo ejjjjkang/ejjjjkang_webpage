@@ -45,7 +45,8 @@ export const HeaderWrapper = styled.h4`
 
 export const LinkWrapper = styled.a`
 	text-decoration: none !important;
-	color: #7d7d7d;
+	color: #d6d6d6;
+	font-size: 0.9rem;
 `;
 
 export const LinkChipWrapper = ({ children, link }) => {

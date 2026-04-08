@@ -1,4 +1,5 @@
-import { Stack } from "@mui/material";
+import { Stack, Button } from "@mui/material";
+import { useState } from "react";
 import ProfileWrapper from "../wrappers/ProfileWrapper";
 import Wrapper from "../wrappers/SectionWrapper";
 import { HeaderWrapper } from "../wrappers/WordChipWrapper";
@@ -7,7 +8,16 @@ import "./index.css";
 import NewsWrapper from "../wrappers/NewsWrapper";
 import { news_content } from "../sources/textContent.jsx";
 
+const VISIBLE_COUNT = 3;
+
 const Main = () => {
+	const [showAll, setShowAll] = useState(false);
+
+	const featuredNews = news_content.filter((n) => n.featureds);
+	const visibleNews = showAll
+		? featuredNews
+		: featuredNews.slice(0, VISIBLE_COUNT);
+
 	return (
 		<Wrapper>
 			<Stack
@@ -19,7 +29,7 @@ const Main = () => {
 			>
 				<Stack direction={{ md: "row", xs: "column" }} alignItems={"center"}>
 					<ProfileWrapper />
-					<Stack direction={"column"} sx={{ p: 5 }}>
+					<Stack direction={"column"} sx={{ p: 5, fontWeight: 400 }}>
 						<HeaderWrapper id="me">About</HeaderWrapper>
 						<Stack sx={{ lineHeight: "160%" }}>
 							<p>
@@ -65,15 +75,28 @@ const Main = () => {
 								</p>
 							</p>
 						</Stack>
-						<HeaderWrapper id="news-featured">News</HeaderWrapper>
-						<Stack sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-							{news_content.map((news, index) =>
-								news.featureds ? (
-									<NewsWrapper key={index} date={news.date}>
-										{news.content}
-									</NewsWrapper>
-								) : null,
+						<Stack
+							direction="row"
+							justifyContent="space-between"
+							alignItems="flex-start"
+						>
+							<HeaderWrapper id="news-featured">News</HeaderWrapper>
+							{featuredNews.length > VISIBLE_COUNT && (
+								<Button
+									size="small"
+									onClick={() => setShowAll((prev) => !prev)}
+									sx={{ mt: 0.5, textTransform: "none", color: "#11413f" }}
+								>
+									{showAll ? "Show less ▲" : `more ▼`}
+								</Button>
 							)}
+						</Stack>
+						<Stack sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+							{visibleNews.map((news, index) => (
+								<NewsWrapper key={index} date={news.date}>
+									{news.content}
+								</NewsWrapper>
+							))}
 						</Stack>
 					</Stack>
 				</Stack>
