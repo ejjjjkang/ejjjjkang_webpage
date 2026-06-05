@@ -36,11 +36,18 @@ const Main = () => {
 						alignItems={{ md: "center", xs: "flex-start" }}
 					>
 						<ProfileWrapper />
-						<Stack direction={"column"} sx={{ pl: { md: 4, xs: 0 }, pt: { xs: 2, md: 0 }, fontWeight: 400 }}>
+						<Stack
+							direction={"column"}
+							sx={{
+								pl: { md: 4, xs: 0 },
+								pt: { xs: 2, md: 0 },
+								fontWeight: 400,
+							}}
+						>
 							<HeaderWrapper id="me">About</HeaderWrapper>
 							<Stack sx={{ lineHeight: "160%" }}>
 								<p>
-									I am a third-year PhD student in{" "}
+									I am a PhD candidate in{" "}
 									<a
 										className="inline_link"
 										href="https://infosci.cornell.edu/"
@@ -52,15 +59,15 @@ const Main = () => {
 										className="inline_link"
 										href="https://infosci.cornell.edu/content/fussell"
 									>
-										Susan Fussell
+										Dr. Susan Fussell
 									</a>
 									. <br />
-									My research focuses on how emerging technologies shape
-									end-user experiences and how to design interventions that
-									enable end-users to leverage technologies in accountable ways
-									Recently, I am interested in investigating platforms'
-									governance power over AI technologies, trust and safety issues
-									in Human-AI interactions, and creative AI supply-chain. <br />
+									My research focuses on understanding how emerging technologies
+									shape end-user experiences and how to design interventions
+									that enable end-users to leverage technologies in accountable
+									ways Recently, I am interested in understanding trust and
+									safety issues in open source AI models.
+									<br />
 									<p>
 										Previously, I worked as a digital marketing strategist and
 										front-end developer that designs brand experience and
@@ -87,7 +94,10 @@ const Main = () => {
 							</Stack>
 						</Stack>
 					</Stack>
-					<Stack direction={{ md: "row", xs: "column" }} sx={{ p: { md: 3, xs: 0 }, pt: 3, gap: { md: 4, xs: 2 } }}>
+					<Stack
+						direction={{ md: "row", xs: "column" }}
+						sx={{ p: { md: 3, xs: 0 }, pt: 3, gap: { md: 4, xs: 2 } }}
+					>
 						{/* News column */}
 						<Stack direction={"column"} sx={{ flex: 1 }}>
 							<Stack
@@ -125,7 +135,13 @@ const Main = () => {
 										direction="row"
 										sx={{ alignItems: "flex-start" }}
 									>
-										<Stack sx={{ whiteSpace: "nowrap", minWidth: { md: "110px", xs: "80px" }, fontSize: { xs: "0.8rem", md: "1rem" } }}>
+										<Stack
+											sx={{
+												whiteSpace: "nowrap",
+												minWidth: { md: "110px", xs: "80px" },
+												fontSize: { xs: "0.8rem", md: "1rem" },
+											}}
+										>
 											{essay.date}
 										</Stack>
 										<Stack

@@ -23,7 +23,14 @@ const EssayPage = () => {
 	return (
 		<Container sx={{ pt: "80px", pb: 8, maxWidth: "720px" }}>
 			<Stack direction="column" sx={{ gap: 2 }}>
-				<Link to="/" style={{ color: "#8a579c", textDecoration: "none", fontSize: "0.9rem" }}>
+				<Link
+					to="/"
+					style={{
+						color: "#8a579c",
+						textDecoration: "none",
+						fontSize: "0.9rem",
+					}}
+				>
 					← Back
 				</Link>
 				<Typography variant="h4" sx={{ fontWeight: 600 }}>
