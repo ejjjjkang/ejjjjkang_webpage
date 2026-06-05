@@ -1,6 +1,12 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Stack, Container, Typography } from "@mui/material";
 import { essay_content } from "../sources/essayContent";
+import {
+	getEssayDescription,
+	getEssayImageUrl,
+	getEssayUrl,
+} from "../utils/essayMeta";
 
 const EssayPage = () => {
 	const { id } = useParams();
@@ -19,9 +25,26 @@ const EssayPage = () => {
 		.split(/\n\n+/)
 		.map((p) => p.trim())
 		.filter(Boolean);
+	const description = getEssayDescription(essay.content);
+	const pageUrl = getEssayUrl(essay.id);
+	const imageUrl = getEssayImageUrl(essay.image);
 
 	return (
 		<Container sx={{ pt: "80px", pb: 8, maxWidth: "720px" }}>
+			<Helmet>
+				<title>{`${essay.title} | Eun Jeong Kang`}</title>
+				<meta name="description" content={description} />
+				<link rel="canonical" href={pageUrl} />
+				<meta property="og:type" content="article" />
+				<meta property="og:title" content={essay.title} />
+				<meta property="og:description" content={description} />
+				<meta property="og:url" content={pageUrl} />
+				{imageUrl && <meta property="og:image" content={imageUrl} />}
+				<meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+				<meta name="twitter:title" content={essay.title} />
+				<meta name="twitter:description" content={description} />
+				{imageUrl && <meta name="twitter:image" content={imageUrl} />}
+			</Helmet>
 			<Stack direction="column" sx={{ gap: 2 }}>
 				<Link
 					to="/"

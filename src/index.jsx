@@ -1,30 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
 import "./index.css";
-import App from "./App";
-import EssayPage from "./sections/EssayPage";
-import {
-	createBrowserRouter,
-	createHashRouter,
-	RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routes } from "./routes";
 import reportWebVitals from "./reportWebVitals";
 
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
-	},
-	{
-		path: "/essay/:id",
-		element: <EssayPage />,
-	},
-]);
+const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<HelmetProvider>
+			<RouterProvider router={router} />
+		</HelmetProvider>
 	</React.StrictMode>,
 );
 
