@@ -10,7 +10,11 @@ const ProfileWrapper = () => {
 	return (
 		<Stack direction={"column"}>
 			<img style={{ borderRadius: "50%" }} src={profile} alt="profile" />
-			<Stack direction={"row"} justifyContent={"space-evenly"} sx={{ pt: 3 }}>
+			<Stack
+				direction={"row"}
+				justifyContent={"space-evenly"}
+				sx={{ pt: 3, color: "#bababa" }}
+			>
 				<LinkChipWrapper link="mailto:ek646@cornell.edu">
 					<EmailIcon fontSize="large" />
 				</LinkChipWrapper>

@@ -7,16 +7,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	--angle: 45deg;
-	--angle: 45deg;
-	background: linear-gradient(
-		var(--angle),
-		oklab(87.6% -0.005 0.17),
-		oklab(82.4% 0.043 0.142),
-		oklab(77.7% 0.096 0.104),
-		oklab(73.7% 0.152 0.054),
-		oklab(70.8% 0.203 -0.002)
-	);
+	background: white;
 }
 
 .inter-500 {

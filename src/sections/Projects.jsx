@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Wrapper from "../wrappers/SectionWrapper";
 import CardWrapper from "../wrappers/CardWrapper";
-import { project_content } from "../sources/textContent";
+import { project_content } from "../sources/textContent.jsx";
 import { Button, Stack, Typography, Skeleton, Box } from "@mui/material";
 import { ConferenceChipWrapper } from "../wrappers/WordChipWrapper";
 import ThumbnailWrapper from "../wrappers/ThumbnailWrapper";
@@ -34,7 +34,7 @@ const Projects = () => {
 							{project.img ? (
 								<ThumbnailWrapper>{project.img}</ThumbnailWrapper>
 							) : (
-								<Skeleton variant="rectangular" width={300} height={150} />
+								<Skeleton variant="rectangular" width="100%" height={150} />
 							)}
 							<Stack
 								direction={"column"}
@@ -90,9 +90,13 @@ const Projects = () => {
 									{index === activeIndex ? (
 										<Box
 											sx={{
-												backgroundColor: "#acdee9",
-												p: 1,
+												border: "1px  #6fc5c971 solid",
+												backgroundColor: "#ffffff",
+												p: 3,
 												mt: 1,
+												fontSize: "0.9em",
+												lineHeight: "150%",
+												fontWeight: 400,
 												borderRadius: "10px",
 											}}
 										>

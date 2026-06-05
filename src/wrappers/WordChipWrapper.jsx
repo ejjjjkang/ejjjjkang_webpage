@@ -30,12 +30,23 @@ export const MenuItemWrapper = styled.span`
 `;
 
 export const HeaderWrapper = styled.h4`
-	font-size: 2em;
+	font-size: 1.2em;
+	margin-bottom: 0.8em;
+
+	&::after {
+		content: "";
+		display: block;
+		width: 8rem;
+		height: 4px;
+		background-color: #158697;
+		margin-top: 0.3em;
+	}
 `;
 
 export const LinkWrapper = styled.a`
 	text-decoration: none !important;
-	color: #7d7d7d;
+	color: #d6d6d6;
+	font-size: 0.9rem;
 `;
 
 export const LinkChipWrapper = ({ children, link }) => {

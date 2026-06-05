@@ -17,7 +17,7 @@ const MiniCardWrapper = ({ title, img, content, link }) => {
 
 	return (
 		<Card variant="outline">
-			<Stack direction={"row"} sx={{ p: 1, alignItems: "center" }}>
+			<Stack direction={"row"} sx={{ p: 3, alignItems: "center" }}>
 				<Stack sx={{ width: "20%", height: "100%", m: 2 }}>
 					<img src={img}></img>
 				</Stack>
