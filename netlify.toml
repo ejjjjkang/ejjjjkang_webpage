@@ -6,3 +6,11 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[plugins]]
+  package = "netlify-plugin-prerender-spa"
+
+[plugins.inputs]
+  buildDir = "dist"
+  # routesFile will be generated at build time by scripts/generate-prerender-routes.mjs
+  routesFile = "prerender-routes.txt"

@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Stack, Container, Typography } from "@mui/material";
+import { Stack, Container, Typography, Paper } from "@mui/material";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { essay_content } from "../sources/essayContent";
 import {
 	getEssayDescription,
@@ -21,10 +23,23 @@ const EssayPage = () => {
 		);
 	}
 
-	const paragraphs = essay.content
-		.split(/\n\n+/)
-		.map((p) => p.trim())
-		.filter(Boolean);
+	// Prefer explicit `disclaimerText` field; otherwise extract a leading "Disclaimer:" paragraph from content
+	const disclaimerText =
+		essay.disclaimerText ||
+		(() => {
+			const m = essay.content.match(
+				/^\s*Disclaimer:\s*([\s\S]*?)(?:\n{2,}|$)/i,
+			);
+			return m ? m[1].trim() : null;
+		})();
+
+	const contentBody = essay.disclaimerText
+		? essay.content
+		: disclaimerText
+			? essay.content.replace(/^\s*Disclaimer:[\s\S]*?(?:\n{2,}|$)/i, "").trim()
+			: essay.content;
+
+	const paragraphs = null;
 	const description = getEssayDescription(essay.content);
 	const pageUrl = getEssayUrl(essay.id);
 	const imageUrl = getEssayImageUrl(essay.image);
@@ -40,7 +55,10 @@ const EssayPage = () => {
 				<meta property="og:description" content={description} />
 				<meta property="og:url" content={pageUrl} />
 				{imageUrl && <meta property="og:image" content={imageUrl} />}
-				<meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+				<meta
+					name="twitter:card"
+					content={imageUrl ? "summary_large_image" : "summary"}
+				/>
 				<meta name="twitter:title" content={essay.title} />
 				<meta name="twitter:description" content={description} />
 				{imageUrl && <meta name="twitter:image" content={imageUrl} />}
@@ -62,6 +80,24 @@ const EssayPage = () => {
 				<Typography sx={{ color: "#999", fontSize: "0.9rem" }}>
 					{essay.date}
 				</Typography>
+				{disclaimerText && (
+					<Paper
+						elevation={0}
+						sx={{
+							p: 2,
+							bgcolor: "#f5f5f5",
+							borderLeft: "4px solid #e0e0e0",
+							borderRadius: "6px",
+						}}
+					>
+						<Typography sx={{ fontSize: "0.85rem", fontWeight: 600, mb: 0.5 }}>
+							Disclaimer
+						</Typography>
+						<Typography sx={{ fontSize: "0.9rem", color: "#444" }}>
+							{disclaimerText}
+						</Typography>
+					</Paper>
+				)}
 				{essay.image && (
 					<img
 						src={essay.image}
@@ -70,11 +106,26 @@ const EssayPage = () => {
 					/>
 				)}
 				<Stack sx={{ borderTop: "1px solid #eee", pt: 3, gap: 2 }}>
-					{paragraphs.map((para, i) => (
-						<Typography key={i} sx={{ lineHeight: 1.8 }}>
-							{para}
-						</Typography>
-					))}
+					<ReactMarkdown
+						remarkPlugins={[remarkGfm]}
+						components={{
+							a: ({ node, ...props }) => (
+								<a
+									{...props}
+									target="_blank"
+									rel="noopener noreferrer"
+									style={{ color: "#8a579c" }}
+								/>
+							),
+							p: ({ node, children }) => (
+								<Typography component="div" sx={{ lineHeight: 1.8 }}>
+									{children}
+								</Typography>
+							),
+						}}
+					>
+						{contentBody}
+					</ReactMarkdown>
 				</Stack>
 			</Stack>
 		</Container>
