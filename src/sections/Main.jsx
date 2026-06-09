@@ -127,7 +127,24 @@ const Main = () => {
 
 						{/* Essays column */}
 						<Stack direction={"column"} sx={{ flex: 1 }}>
-							<HeaderWrapper id="essays">Essays</HeaderWrapper>
+							<Stack
+								direction="row"
+								justifyContent="space-between"
+								alignItems="flex-start"
+							>
+								<HeaderWrapper id="essays">Essays</HeaderWrapper>
+								<Button
+									size="small"
+									component="a"
+									href="https://substack.com/@purplecoffee/posts"
+									target="_blank"
+									rel="noopener noreferrer"
+									sx={{ mt: 0.5, textTransform: "none", color: "#11413f" }}
+									startIcon={<span style={{ fontSize: "0.8rem" }}>→</span>}
+								>
+									more
+								</Button>
+							</Stack>
 							<Stack sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
 								{essay_content.map((essay, index) => (
 									<Stack
