@@ -9,8 +9,16 @@ const SITE_URL = JSON.parse(
 	await fs.readFile(path.resolve("site.config.json"), "utf8"),
 ).siteUrl;
 
+function stripMarkdown(text) {
+	return text
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+		.replace(/[*_~`#]+/g, "")
+		.replace(/\s+/g, " ")
+		.trim();
+}
+
 function extractDescription(content, maxLength = 155) {
-	const text = content.replace(/\s+/g, " ").trim();
+	const text = stripMarkdown(content);
 	if (text.length <= maxLength) return text;
 	return `${text.slice(0, maxLength - 3).trim()}...`;
 }
@@ -23,6 +31,31 @@ function escapeHtml(str) {
 		.replace(/>/g, "&gt;");
 }
 
+function escapeJsonString(str) {
+	return str
+		.replace(/\\/g, "\\\\")
+		.replace(/"/g, '\\"')
+		.replace(/\n/g, "\\n")
+		.replace(/\r/g, "\\r")
+		.replace(/\t/g, "\\t");
+}
+
+function markdownToHtml(md) {
+	return md
+		.split(/\n{2,}/)
+		.map((block) => block.trim())
+		.filter(Boolean)
+		.map((block) => {
+			const escaped = escapeHtml(block);
+			const withLinks = escaped.replace(
+				/\[([^\]]+)\]\(([^)]+)\)/g,
+				'<a href="$2" rel="noopener noreferrer">$1</a>',
+			);
+			return `<p>${withLinks}</p>`;
+		})
+		.join("\n");
+}
+
 async function loadEssays() {
 	const entries = await fs.readdir(ESSAYS_DIR, { withFileTypes: true });
 	const essays = [];
@@ -32,10 +65,11 @@ async function loadEssays() {
 		const txt = await fs.readFile(path.join(ESSAYS_DIR, e.name), "utf8");
 		const id = txt.match(/^id:\s*(.+)$/m)?.[1]?.trim();
 		const title = txt.match(/^title:\s*(.+)$/m)?.[1]?.trim();
+		const date = txt.match(/^date:\s*(.+)$/m)?.[1]?.trim();
 		const image = txt.match(/^image:\s*(.+)$/m)?.[1]?.trim();
 		const contentMatch = txt.match(/^content:\s*\|\s*\n([\s\S]+)/m);
 		const content = contentMatch ? contentMatch[1].replace(/^ {2}/gm, "") : "";
-		if (id) essays.push({ id, title, image, content });
+		if (id) essays.push({ id, title, date, image, content });
 	}
 	return essays;
 }
@@ -69,6 +103,42 @@ function buildMetaTags(essay) {
 	return tags;
 }
 
+function buildJsonLd(essay) {
+	const pageUrl = `${SITE_URL}/essay/${essay.id}`;
+	const description = extractDescription(essay.content);
+	const ld = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		headline: essay.title,
+		description,
+		url: pageUrl,
+		author: {
+			"@type": "Person",
+			name: "Eun Jeong Kang",
+			url: SITE_URL,
+		},
+	};
+	if (essay.image) {
+		ld.image = essay.image.startsWith("http")
+			? essay.image
+			: `${SITE_URL}${essay.image.startsWith("/") ? essay.image : `/${essay.image}`}`;
+	}
+	return `<script type="application/ld+json">${JSON.stringify(ld)}</script>`;
+}
+
+function buildBodyContent(essay) {
+	const articleHtml = markdownToHtml(essay.content);
+	return [
+		`<article>`,
+		`<h1>${escapeHtml(essay.title)}</h1>`,
+		essay.date ? `<time>${escapeHtml(essay.date)}</time>` : "",
+		articleHtml,
+		`</article>`,
+	]
+		.filter(Boolean)
+		.join("\n");
+}
+
 async function prerender() {
 	if (!existsSync(DIST)) {
 		console.error("dist folder not found; run build first");
@@ -80,13 +150,14 @@ async function prerender() {
 
 	for (const essay of essays) {
 		const metaTags = buildMetaTags(essay);
+		const jsonLd = buildJsonLd(essay);
+		const bodyContent = buildBodyContent(essay);
+
 		const html = template
 			.replace(/<title>[^<]*<\/title>/, "")
-			.replace(
-				/<meta name="description"[^>]*\/>/,
-				"",
-			)
-			.replace("</head>", `${metaTags}  </head>`);
+			.replace(/<meta name="description"[^>]*\/>/, "")
+			.replace("</head>", `${metaTags}    ${jsonLd}\n  </head>`)
+			.replace('<div id="root"></div>', `<div id="root">${bodyContent}</div>`);
 
 		const outDir = path.join(DIST, "essay", essay.id);
 		await fs.mkdir(outDir, { recursive: true });
