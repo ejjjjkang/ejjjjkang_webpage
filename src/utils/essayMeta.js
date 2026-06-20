@@ -6,7 +6,7 @@ export const getEssayDescription = (content, maxLength = 155) => {
 	return `${text.slice(0, maxLength - 3).trim()}...`;
 };
 
-export const getEssayUrl = (id) => `${siteConfig.siteUrl}/essay/${id}`;
+export const getEssayUrl = (id) => `${siteConfig.siteUrl}/essay/${id}/`;
 
 export const getEssayImageUrl = (image) => {
 	if (!image) return undefined;

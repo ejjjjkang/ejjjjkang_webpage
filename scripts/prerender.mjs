@@ -77,7 +77,7 @@ async function loadEssays() {
 function buildMetaTags(essay) {
 	const description = escapeHtml(extractDescription(essay.content));
 	const title = escapeHtml(`${essay.title} | Eun Jeong Kang`);
-	const pageUrl = `${SITE_URL}/essay/${essay.id}`;
+	const pageUrl = `${SITE_URL}/essay/${essay.id}/`;
 	const imageUrl = essay.image
 		? essay.image.startsWith("http")
 			? essay.image
@@ -104,7 +104,7 @@ function buildMetaTags(essay) {
 }
 
 function buildJsonLd(essay) {
-	const pageUrl = `${SITE_URL}/essay/${essay.id}`;
+	const pageUrl = `${SITE_URL}/essay/${essay.id}/`;
 	const description = extractDescription(essay.content);
 	const ld = {
 		"@context": "https://schema.org",

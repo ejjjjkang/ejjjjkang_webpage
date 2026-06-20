@@ -22,7 +22,7 @@ const essayIds = fs
 const urls = [
 	{ loc: `${siteUrl}/`, priority: "1.0" },
 	...essayIds.map((id) => ({
-		loc: `${siteUrl}/essay/${id}`,
+		loc: `${siteUrl}/essay/${id}/`,
 		priority: "0.8",
 	})),
 ];
