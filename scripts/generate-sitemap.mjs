@@ -42,3 +42,9 @@ ${urls
 
 fs.writeFileSync(outputPath, xml);
 console.log(`Sitemap written to public/sitemap.xml (${urls.length} URLs)`);
+
+if (process.env.PING_GOOGLE !== "false") {
+	fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(`${siteUrl}/sitemap.xml`)}`)
+		.then(() => console.log("Pinged Google with updated sitemap"))
+		.catch(() => {});
+}

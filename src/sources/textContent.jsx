@@ -143,6 +143,18 @@ export const story_content = [
 
 export const news_content = [
 	{
+		date: "July, 2026",
+		content:
+			"My paper studying open model marketplace got accepted to AIES 2026!",
+		featureds: true,
+	},
+	{
+		date: "June, 2026",
+		content:
+			"I passed my A-exam. I will investigate the accountability of AI remixers as intermediaries in the AI supply chain.",
+		featureds: true,
+	},
+	{
 		date: "June, 2026",
 		content: "Will be attending FAccT 2026 Doctoral Consortium",
 		featureds: true,
