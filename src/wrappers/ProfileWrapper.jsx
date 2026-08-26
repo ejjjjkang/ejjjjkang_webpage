@@ -15,16 +15,29 @@ const ProfileWrapper = () => {
 				justifyContent={"space-evenly"}
 				sx={{ pt: 3, color: "#bababa" }}
 			>
-				<LinkChipWrapper link="mailto:ek646@cornell.edu">
+				<LinkChipWrapper link="mailto:ek646@cornell.edu" label="Email">
 					<EmailIcon fontSize="large" />
 				</LinkChipWrapper>
-				<LinkChipWrapper link="https://scholar.google.com/citations?user=HHbjdykAAAAJ&hl=en&oi=ao">
+				<LinkChipWrapper
+					link="https://scholar.google.com/citations?user=HHbjdykAAAAJ&hl=en&oi=ao"
+					label="Google Scholar"
+				>
 					<SchoolIcon fontSize="large" />
 				</LinkChipWrapper>
-				<LinkChipWrapper link="https://docs.google.com/document/d/1qHcXlC2tz-_s7MbvZIfg-cwp5LtR9dXpFsYHLS_Tc6Q/edit?usp=sharing">
-					<TbFileCv size={35} />
+				<LinkChipWrapper link="/cv.pdf" label="Curriculum Vitae (PDF)">
+					<Stack
+						direction={"row"}
+						alignItems={"center"}
+						sx={{ gap: 0.5 }}
+					>
+						<TbFileCv size={35} />
+						<span>CV</span>
+					</Stack>
 				</LinkChipWrapper>
-				<LinkChipWrapper link="www.linkedin.com/in/ejeunkang">
+				<LinkChipWrapper
+					link="https://www.linkedin.com/in/ejeunkang"
+					label="LinkedIn"
+				>
 					<LinkedInIcon fontSize="large" />
 				</LinkChipWrapper>
 			</Stack>

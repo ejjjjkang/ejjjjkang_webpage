@@ -2,6 +2,7 @@ import { Stack, Container } from "@mui/material";
 import "./App.css";
 import Menubar from "./wrappers/Menubar";
 import Projects from "./sections/Projects";
+import NonArchivalStudies from "./sections/NonArchivalStudies";
 import AboutMe from "./sections/AboutMe";
 import Resource from "./sections/Resource";
 import DailyLog from "./sections/DailyLog";
@@ -17,7 +18,11 @@ function App() {
 			id="me"
 			sx={{ position: "relative", backgroundColor: "white", pt: "56px" }}
 		>
-			<ScrollToHashElement behavior="smooth" />
+			{/* Client-only: reads `window` during render, so it must not run in the
+			    prerender pass (scripts/prerender.mjs). */}
+			{typeof window !== "undefined" && (
+				<ScrollToHashElement behavior="smooth" />
+			)}
 			<Menubar />
 			<Stack direction={"column"}>
 				<Main />
@@ -26,9 +31,11 @@ function App() {
 				<Divider />
 				<Projects />
 				<Divider />
-				<AboutMe />
+				<NonArchivalStudies />
 				<Divider />
-				<Resource />
+				<AboutMe />
+				{/* <Divider /> */}
+				{/* <Resource /> */}
 				{/* <ReadingList /> */}
 				{/* <DailyLog /> */}
 			</Stack>

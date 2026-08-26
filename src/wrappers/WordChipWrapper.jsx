@@ -49,12 +49,42 @@ export const LinkWrapper = styled.a`
 	font-size: 0.9rem;
 `;
 
-export const LinkChipWrapper = ({ children, link }) => {
+export const LinkChipWrapper = ({ children, link, label }) => {
 	return (
 		<Stack sx={{ p: 1 }}>
-			<LinkWrapper href={link} target="_blank">
+			<LinkWrapper
+				href={link}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={label}
+				title={label}
+			>
 				{children}
 			</LinkWrapper>
 		</Stack>
 	);
 };
+
+export const KeywordChipWrapper = styled.span`
+	background-color: #f4ebf7;
+	color: #8a579c;
+	border: 1px solid #8a579c40;
+	padding: 2px 8px;
+	border-radius: 12px;
+	font-size: 0.75em;
+	display: inline-block;
+	margin-right: 6px;
+	margin-top: 6px;
+`;
+
+export const MethodChipWrapper = styled.span`
+	background-color: #158697;
+	color: #ffffff;
+	padding: 2px 8px;
+	border-radius: 12px;
+	font-size: 0.75em;
+	font-weight: 600;
+	display: inline-block;
+	margin-right: 6px;
+	margin-top: 6px;
+`;

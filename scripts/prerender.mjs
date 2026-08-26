@@ -2,9 +2,18 @@
 import fs from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
+import { pathToFileURL } from "url";
 
 const DIST = path.resolve("dist");
 const ESSAYS_DIR = path.resolve("src/essays");
+const SSR_DIR = path.resolve("dist-ssr");
+
+// Head content for "/". The essays derive theirs from front matter; the home
+// page has no such source, so it is declared here.
+const HOME_TITLE =
+	"Eun Jeong Kang — PhD Candidate in Information Science, Cornell University";
+const HOME_DESCRIPTION =
+	"Eun Jeong Kang is a PhD candidate in Information Science at Cornell University studying human-AI interaction, and trust and safety in open-source AI models.";
 const SITE_URL = JSON.parse(
 	await fs.readFile(path.resolve("site.config.json"), "utf8"),
 ).siteUrl;
@@ -139,6 +148,37 @@ function buildBodyContent(essay) {
 		.join("\n");
 }
 
+async function loadServerRenderer() {
+	for (const name of ["entry-server.mjs", "entry-server.js"]) {
+		const candidate = path.join(SSR_DIR, name);
+		if (existsSync(candidate)) {
+			return (await import(pathToFileURL(candidate).href)).render;
+		}
+	}
+	throw new Error(
+		`No server bundle in ${SSR_DIR}. Run: vite build --config vite.config.ssr.js`,
+	);
+}
+
+async function prerenderHome(template) {
+	const render = await loadServerRenderer();
+	const appHtml = render("/");
+
+	let tags = `    <title>${escapeHtml(HOME_TITLE)}</title>\n`;
+	tags += `    <meta name="description" content="${escapeHtml(HOME_DESCRIPTION)}" />\n`;
+	tags += `    <link rel="canonical" href="${SITE_URL}/" />\n`;
+
+	const html = template
+		.replace(/<title>[^<]*<\/title>/, "")
+		.replace(/<meta name="description"[^>]*\/>/, "")
+		.replace("</head>", `${tags}  </head>`)
+		.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
+
+	const outPath = path.join(DIST, "index.html");
+	await fs.writeFile(outPath, html, "utf8");
+	console.log("Wrote", outPath, `(${html.length} bytes)`);
+}
+
 async function prerender() {
 	if (!existsSync(DIST)) {
 		console.error("dist folder not found; run build first");
@@ -165,6 +205,8 @@ async function prerender() {
 		await fs.writeFile(outPath, html, "utf8");
 		console.log("Wrote", outPath);
 	}
+
+	await prerenderHome(template);
 
 	console.log("Prerender complete");
 }

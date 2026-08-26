@@ -1,3 +1,9 @@
+export const project_keywords = [
+	"Human Relationship through AI",
+	"Future of Social Computing",
+	"Trust and Safety",
+];
+
 export const project_content = [
 	{
 		title:
@@ -5,6 +11,7 @@ export const project_content = [
 		img: "/thumbnails/miku.png",
 		link_doi: "/miku.pdf",
 		author: ["Eun Jeong Kang", "Waki Kamino", "Susan Fussell", "Malte Jung"],
+		keywords: ["Future of Social Computing", "Trust and Safety"],
 		conference: "CHI 2026 workshop",
 		published: true,
 	},
@@ -21,6 +28,7 @@ export const project_content = [
 			"Susan Fussell",
 			"Juho Kim",
 		],
+		keywords: ["Human Relationship through AI"],
 		conference: "CSCW 2025",
 		published: true,
 	},
@@ -36,6 +44,7 @@ export const project_content = [
 			"Min Kyung Lee",
 			"Juho Kim",
 		],
+		keywords: ["Human Relationship through AI", "Future of Social Computing"],
 		conference: "CHI 2025",
 		published: true,
 	},
@@ -48,6 +57,7 @@ export const project_content = [
 		link_doi: "https://doi.org/10.1145/3544548.3581386",
 		img: "/thumbnails/creator01.png",
 		author: ["Yoonseo Choi", "Eun Jeong Kang", "Min Kyung Lee", "Juho Kim"],
+		keywords: ["Future of Social Computing"],
 		conference: "CHI 2023",
 		published: true,
 	},
@@ -71,6 +81,7 @@ export const project_content = [
 			"Danaë Metaxa",
 			"Andrés Monroy-Hernández",
 		],
+		keywords: [],
 		conference: "Interactions",
 		published: true,
 	},
@@ -91,7 +102,63 @@ be potentially designed for bridging the fan-idol relationship.",
 		link_doi:
 			"https://ai-cultures.github.io/papers/when_ai_meets_the_k_pop_cultur.pdf",
 		author: ["Eun Jeong Kang", "Haesoo Kim", "Hyunwoo Kim", "Juho Kim"],
+		keywords: ["Human Relationship through AI", "Trust and Safety"],
 		conference: "Neurips 2022 Workshop",
+		published: true,
+	},
+];
+
+/**
+ * Non-archival studies — coursework and other unpublished studies, shown in their own section
+ * below Publications. Same card template as `project_content`.
+ *
+ * TEMPLATE — copy this block for the next one:
+ * {
+ * 	title: "",
+ * 	img: "/thumbnails/<name>.png",   // page-1 render works well; omit for a grey placeholder
+ * 	link_pdf: "/<name>.pdf",         // file lives in public/, served from the root
+ * 	link_doi: "",                    // usually none for non-archival work; omit to hide the button
+ * 	author: ["Eun Jeong Kang"],      // exact string "Eun Jeong Kang" is what highlights your name
+ * 	methods: [],                     // methodology chips (teal), e.g. "Controlled experiment"
+ * 	keywords: [],                    // pick from project_keywords above
+ * 	conference: "",                  // optional purple chip, e.g. "INFO 6940, Cornell"; omit to hide
+ * 	abs: "",                         // shown by the Abs button; omit to hide the button
+ * 	published: true,                 // false renders a disabled "To appear" button instead
+ * },
+ */
+export const study_content = [
+	{
+		title:
+			"The Impact of the Researcher’s Social Presence on Synchronous Remote Usability Testing",
+		img: "/thumbnails/social-presence.png",
+		link_pdf: "/social-presence-usability.pdf",
+		author: ["Eun Jeong Kang", "Xin Chen", "Xianyi Li"],
+		methods: ["Controlled experiment"],
+		keywords: ["Human Relationship through AI"],
+		abs: "Synchronous remote usability testing is widely used by HCI researchers and UX designers to investigate users’ thoughts about prototypes. Researchers can host online meetings to conduct one-on-one interviews or usability tests conveniently. Although remote usability testing offers convenience to both researchers and participants, recent research shows that participants can be influenced by the experimental mode. \
+		To understand how varied usability test settings affect participants as well as test results, we conducted a comparison study of three researcher presence modes, focusing on the researcher’s social presence. In a between-subjects experiment with 32 participants, we compared three conditions — (1) Camera, (2) Avatar, and (3) No-camera. The results show that there was no significant difference in usability test results. However, we found that participants tended to ask more questions and complete tasks more quickly in the camera setting. Based on these results, we discuss which setting would be beneficial for researchers in remote usability tests and how the avatar setting could be applied to user studies as an alternative.",
+		published: true,
+	},
+	{
+		title:
+			"Are LLMs Leading to an HCI Winter? A Comparison of Sponsorship Trends in HCI and NLP Conferences During the LLM Era",
+		img: "/thumbnails/hci-winter-sponsorship.png",
+		link_pdf: "/hci-winter-sponsorship.pdf",
+		author: ["Eun Jeong Kang"],
+		methods: ["Quantitative trend analysis"],
+		keywords: ["Future of Social Computing"],
+		published: true,
+	},
+	{
+		title:
+			"Establishing Trustworthiness of AI-Driven Content on Social Media: Practices and Considerations",
+		img: "/thumbnails/ai-content-trustworthiness.png",
+		link_pdf: "/ai-content-trustworthiness.pdf",
+		author: ["Eun Jeong Kang"],
+		methods: ["Critical discourse analysis"],
+		keywords: ["Trust and Safety", "Future of Social Computing"],
+		abs: "Social media platforms have faced the challenge of effectively ensuring the trustworthiness of AI-driven content (e.g., synthetic content, altered content) spread in their spaces to the public. While community principles to handle AI-driven content have been suggested, platforms’ general approaches to and considerations for these emerging topics, as the authorities that implement governance, remain unclear. This study explores the procedures platforms use to ensure trustworthiness of AI-driven content and identifies the factors that enable platforms to establish AI-driven content principles. \
+		Through critical discourse analysis of content outlining policies, we identified that platforms are guided by their existing guidelines to distinguish and moderate AI-driven content from general content. Additionally, user spontaneity and the integration of stakeholder values into decision-making are essential for effectively fostering trust in content among users. We underscore the significance of designing user experiences that encourage social media users to take ownership of creating trustworthy AI-driven content.",
 		published: true,
 	},
 ];

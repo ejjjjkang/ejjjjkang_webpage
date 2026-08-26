@@ -29,6 +29,7 @@ const DrawerLink = styled(HashLink)`
 const navItems = [
 	{ label: "About", to: "/#me" },
 	{ label: "Research", to: "/#publications" },
+	{ label: "Studies", to: "/#studies" },
 	{ label: "Projects", to: "/#projects" },
 	{ label: "Resource", to: "/#resource" },
 ];

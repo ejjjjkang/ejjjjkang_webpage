@@ -1,19 +1,46 @@
 import { useState } from "react";
 import Wrapper from "../wrappers/SectionWrapper";
-import CardWrapper from "../wrappers/CardWrapper";
-import { project_content } from "../sources/textContent.jsx";
-import { Button, Stack, Typography, Skeleton, Box } from "@mui/material";
-import { ConferenceChipWrapper } from "../wrappers/WordChipWrapper";
-import ThumbnailWrapper from "../wrappers/ThumbnailWrapper";
+import {
+	project_content,
+	project_keywords,
+} from "../sources/textContent.jsx";
+import { Button, Stack, Typography } from "@mui/material";
 import { HeaderWrapper } from "../wrappers/WordChipWrapper";
-import ButtonWrapper from "../wrappers/ButtonWrapper";
+import PublicationCardWrapper from "../wrappers/PublicationCardWrapper";
 
 const Projects = () => {
 	const [activeIndex, setActiveIndex] = useState(null);
+	const [activeKeyword, setActiveKeyword] = useState(null);
 
 	const handleClick = (idx) => {
 		setActiveIndex(idx);
 	};
+
+	const handleKeywordClick = (keyword) => {
+		// clicking the selected keyword again clears the filter
+		setActiveKeyword((current) => (current === keyword ? null : keyword));
+		setActiveIndex(null);
+	};
+
+	// filter buttons follow the site accent: outlined purple, filled when active
+	const keywordButtonSx = (isActive) => ({
+		mr: 1,
+		mt: 1,
+		textTransform: "none",
+		borderColor: "#8a579c",
+		color: isActive ? "#ffffff" : "#8a579c",
+		backgroundColor: isActive ? "#bf55cf" : "transparent",
+		"&:hover": {
+			borderColor: "#bf55cf",
+			backgroundColor: isActive ? "#bf55cf" : "#f4ebf7",
+		},
+	});
+
+	const filteredProjects = activeKeyword
+		? project_content.filter((project) =>
+				(project.keywords || []).includes(activeKeyword)
+		  )
+		: project_content;
 
 	return (
 		<Wrapper>
@@ -23,90 +50,47 @@ const Projects = () => {
 					This is a collection of publication I have worked on. You can find
 					more information in the PDFs.
 				</Typography>
+				<Stack
+					direction={"row"}
+					flexWrap={"wrap"}
+					spacing={0}
+					sx={{ pt: 2 }}
+					role="group"
+					aria-label="Filter publications by keyword"
+				>
+					<Button
+						variant={activeKeyword === null ? "contained" : "outlined"}
+						size="small"
+						onClick={() => handleKeywordClick(null)}
+						aria-pressed={activeKeyword === null}
+						sx={keywordButtonSx(activeKeyword === null)}
+					>
+						All
+					</Button>
+					{project_keywords.map((keyword) => (
+						<Button
+							key={keyword}
+							variant={activeKeyword === keyword ? "contained" : "outlined"}
+							size="small"
+							onClick={() => handleKeywordClick(keyword)}
+							aria-pressed={activeKeyword === keyword}
+							sx={keywordButtonSx(activeKeyword === keyword)}
+						>
+							{keyword}
+						</Button>
+					))}
+				</Stack>
 			</Stack>
 			<Stack direction={"row"} flexWrap={"wrap"}>
-				{project_content.map((project, index) => (
-					<CardWrapper key={index}>
-						<Stack
-							direction={{ md: "row", xs: "column" }}
-							spacing={{ xs: "3" }}
-						>
-							{project.img ? (
-								<ThumbnailWrapper>{project.img}</ThumbnailWrapper>
-							) : (
-								<Skeleton variant="rectangular" width="100%" height={150} />
-							)}
-							<Stack
-								direction={"column"}
-								alignItems={"flex-start"}
-								sx={{ p: 2 }}
-							>
-								<Box variant="span" sx={{ lineHeight: "150%", pb: 1 }}>
-									<ConferenceChipWrapper>
-										{project.conference}
-									</ConferenceChipWrapper>
-									{project.title}
-								</Box>
-								<Box variant="span">
-									{project.author.map((author) => (
-										<Typography key={author} sx={{ display: "inline", pr: 1 }}>
-											{author === "Eun Jeong Kang" ? (
-												<strong style={{ color: "#bf55cf" }}>{author}</strong>
-											) : (
-												author
-											)}
-										</Typography>
-									))}
-								</Box>
-								<Stack
-									direction={"column"}
-									sx={{ pt: 1 }}
-									justifyContent={"flex-start"}
-								>
-									<Stack direction={"row"}>
-										{project.published ? (
-											<>
-												<ButtonWrapper
-													abs={project.abs}
-													index={index}
-													handleClick={handleClick}
-													setActiveIndex={setActiveIndex}
-													activeIndex={activeIndex}
-													text="Abs"
-												/>
-												<ButtonWrapper link={project.link_doi} text="Doi" />
-												<ButtonWrapper link={project.link_pdf} text="PDF" />
-											</>
-										) : (
-											<>
-												<Stack sx={{ mr: 1, mt: 2 }}>
-													<Button variant="outlined" disabled>
-														To appear
-													</Button>
-												</Stack>
-											</>
-										)}
-									</Stack>
-									{index === activeIndex ? (
-										<Box
-											sx={{
-												border: "1px  #6fc5c971 solid",
-												backgroundColor: "#ffffff",
-												p: 3,
-												mt: 1,
-												fontSize: "0.9em",
-												lineHeight: "150%",
-												fontWeight: 400,
-												borderRadius: "10px",
-											}}
-										>
-											{project.abs}
-										</Box>
-									) : null}
-								</Stack>
-							</Stack>
-						</Stack>
-					</CardWrapper>
+				{filteredProjects.map((project, index) => (
+					<PublicationCardWrapper
+						key={project.title}
+						entry={project}
+						index={index}
+						activeIndex={activeIndex}
+						handleClick={handleClick}
+						setActiveIndex={setActiveIndex}
+					/>
 				))}
 			</Stack>
 		</Wrapper>

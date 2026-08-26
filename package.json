@@ -26,12 +26,10 @@
 		"web-vitals": "^5.0.0"
 	},
 	"scripts": {
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist",
 		"start": "vite",
 		"generate-sitemap": "node scripts/generate-sitemap.mjs",
 		"generate-prerender-routes": "node scripts/generate-prerender-routes.mjs",
-		"build": "npm run generate-prerender-routes && npm run generate-sitemap && vite build && node scripts/prerender.mjs",
+		"build": "npm run generate-prerender-routes && npm run generate-sitemap && vite build && vite build --config vite.config.ssr.js && node scripts/prerender.mjs",
 		"preview": "vite preview"
 	},
 	"browserslist": {
