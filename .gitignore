@@ -11,6 +11,9 @@
 # production
 /build
 
+# build intermediate: SSR bundle consumed by scripts/prerender.mjs
+/dist-ssr
+
 # misc
 .DS_Store
 .env.local
