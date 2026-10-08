@@ -7,6 +7,17 @@ export const project_keywords = [
 export const project_content = [
 	{
 		title:
+			"Between Commons and Property: Individual Image-Generation Model Creators' Perceived Accountability for Derivative AI Model on Open Model Marketplaces",
+		img: "/thumbnails/model-creator-accountability.png",
+		link_pdf: "/model-creator-accountability.pdf",
+		author: ["Eun Jeong Kang", "Fengyang Lin", "Angel Hsing-Chi Hwang"],
+		keywords: ["Future of Social Computing", "Trust and Safety"],
+		conference: "AIES 2026",
+		abs: "Within the open model ecosystem, AI model marketplaces enable non-AI experts to create and distribute derivative AI models. These platforms establish RAI approaches that creators are expected to follow to prevent negative downstream effects from model deployment, yet such governance approaches often rely on creators' intrinsic motivation and integrity. Little is known about how individual creators conceptualize their accountability for derivative models and how these conceptualizations shape their RAI practices throughout the development cycle. Through semi-structured interviews with 19 creators of derivative image-generation models on open model marketplaces, we identify two distinct accountability logics underlying creators' development practices: commons-based peer production and personal creative property. Guided by these logics, creators engage with platform RAI approaches in ways that diverge from their intended purposes: they strategically repurpose attribution tools for model visibility rather than provenance transparency, displace platform authority in favor of community-based governance, restrict model access to manage downstream accountability costs, and treat RAI-related work as undervalued labor to be minimized. We discuss how self-regulatory use of RAI tools, shaped by individuals' perceptions, produces shortcomings, and how open model marketplaces might mitigate these limitations by structurally supporting creators' engagement with RAI practices.",
+		published: true,
+	},
+	{
+		title:
 			"Remix Culture as a Lens for Governing Derivative AI Models: A Hatsune Miku Case Study",
 		img: "/thumbnails/miku.png",
 		link_doi: "/miku.pdf",
