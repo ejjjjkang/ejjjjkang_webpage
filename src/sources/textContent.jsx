@@ -7,6 +7,23 @@ export const project_keywords = [
 export const project_content = [
 	{
 		title:
+			"The Impact of Personalized AI Response Suggestions on Content Creators' Direct Messaging",
+		img: "/thumbnails/ai-response-suggestions.png",
+		link_doi: "https://arxiv.org/abs/2610.34770",
+		link_pdf: "/ai-response-suggestions.pdf",
+		author: [
+			"Eun Jeong Kang",
+			"Jingruo Chen",
+			"Jadon Geathers",
+			"Susan Fussell",
+		],
+		keywords: ["Human Relationship through AI", "Future of Social Computing"],
+		conference: "GROUP 2027",
+		abs: "Direct messaging is often employed by social media content creators to directly interact with followers. Those creators attempt to engage with followers in private communication, but they often encounter a large volume of messages. Through formative interviews with 15 creators, we found that creators frequently experience fatigue from writing suitable content, as they moderate audience expectations while concurrently integrating their media personas into responses. To explore how AI can address these challenges, we designed a system providing personalized, AI-generated response suggestions tailored to creators' writing styles to maintain their media personas. In a comparison study with 13 creators that examines how the system affects response behaviors, creators valued the system's ability to soften potential impoliteness and anticipated higher response rates, helping them maintain a professional image. However, creators reported additional labor in verifying the authenticity of AI outputs to mitigate risks caused by AI misalignment. Our results indicate that while AI suggestions enhance efficiency, they can undermine a creator's engagement in communication by shifting their attention toward monitoring AI.",
+		published: true,
+	},
+	{
+		title:
 			"Between Commons and Property: Individual Image-Generation Model Creators' Perceived Accountability for Derivative AI Model on Open Model Marketplaces",
 		img: "/thumbnails/model-creator-accountability.png",
 		link_pdf: "/model-creator-accountability.pdf",
